@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import Schedule from '../components/Schedule.astro';
+import { withBase } from '../utils/slugify';
 ---
 
 <PageLayout title="Schedule" description="The full agenda for Summit events.">
@@ -9,7 +10,7 @@ import Schedule from '../components/Schedule.astro';
 			<p class="eyebrow m-0">Schedule</p>
 			<h1 class="text-3xl sm:text-4xl font-semibold leading-tight text-ink m-0">Make the most of the day</h1>
 			<p class="text-base text-muted m-0">A clear view of every session, conversation, and moment in between.</p>
-			<a class="button secondary w-fit" href="/schedule.ics" download="summit-2026.ics">Add to calendar</a>
+			<a class="button secondary w-fit" href={withBase('/schedule.ics')} download="summit-2026.ics">Add to calendar</a>
 		</header>
 		<Schedule />
 	</section>

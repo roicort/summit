@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Card from '../../components/Card.astro';
 import PageLayout from '../../layouts/PageLayout.astro';
+import { withBase } from '../../utils/slugify';
 
 export async function getStaticPaths() {
 	const speakers = (await getCollection('speakers')).filter((speaker) => speaker.id.startsWith('en/'));
@@ -27,7 +28,7 @@ const conferences = (await getCollection('conferences'))
 			<div class="grid gap-6 md:grid-cols-2">
 				{conferences.map((conference) => {
 					const slug = conference.id.replace(/^en\//, '');
-					return <Card title={conference.data.title} href={`/conferences/${slug}/`} description={conference.data.description} date={conference.data.date} />;
+					return <Card title={conference.data.title} href={withBase(`/conferences/${slug}/`)} description={conference.data.description} date={conference.data.date} />;
 				})}
 			</div>
 		</section>
