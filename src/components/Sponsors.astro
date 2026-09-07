@@ -1,0 +1,64 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	eyebrow?: string;
+	title?: string;
+}
+
+const { eyebrow, title } = Astro.props as Props;
+
+
+const sponsors = [
+  { name: 'Figma', href: 'https://www.figma.com/', icon: 'tabler:brand-figma' },
+  { name: 'Framer', href: 'https://www.framer.com/', icon: 'tabler:brand-framer' },
+  { name: 'Webflow', href: 'https://webflow.com/', icon: 'tabler:brand-webflow' },
+  { name: 'Notion', href: 'https://www.notion.so/', icon: 'tabler:brand-notion' },
+  { name: 'Lottie', href: 'https://lottiefiles.com/', icon: 'tabler:movie' },
+  { name: 'Canva', href: 'https://www.canva.com/', icon: 'tabler:palette' },
+  { name: 'Sketch', href: 'https://www.sketch.com/', icon: 'tabler:brand-sketch' },
+  { name: 'Shopify', href: 'https://www.shopify.com/', icon: 'tabler:shopping-cart' },
+  { name: 'Photoshop', href: 'https://www.adobe.com/products/photoshop.html', icon: 'tabler:brand-adobe-photoshop' },
+  { name: 'Miro', href: 'https://miro.com/', icon: 'tabler:layout-grid' },
+];
+--- 
+
+<script>
+import { gsap } from 'gsap';
+
+document.addEventListener('DOMContentLoaded', function () {
+    const clonedContainer = document.querySelector('#cloned') as any
+
+    Array.from(clonedContainer.children).forEach((img: any) => {
+        const clone = img.cloneNode(true); 
+        clonedContainer.appendChild(clone); 
+    })
+
+    const tl = gsap.timeline({ repeat: -1 });
+    tl.to(clonedContainer, {
+        x: -(clonedContainer.scrollWidth / 2),  duration: 30, ease: 'none'
+    })
+});
+</script>
+  
+<section>
+  {eyebrow && <p class="text-[0.65rem] font-semibold uppercase text-subtle m-0">{eyebrow}</p>} 
+	{title && <h2 class="text-3xl sm:text-4xl font-semibold leading-tight text-ink m-0">{title}</h2>} 
+    <div class="overflow-hidden pt-(--grid-cell)">
+        <div class="flex items-center gap-10 md:gap-30" id="cloned">
+            {sponsors.map((sponsor) => {
+              return (
+                <a
+                  class="flex flex-1 items-center gap-3 whitespace-nowrap text-2xl text-ink transition-opacity hover:opacity-65 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-border"
+                  href={sponsor.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name={sponsor.icon} size={24} stroke-width={1.6} />
+                  <span>{sponsor.name}</span>
+                </a>
+              );
+            })}
+        </div>
+    </div>
+</section>

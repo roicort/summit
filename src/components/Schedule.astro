@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+import { withBase } from '../utils/slugify';
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const allConferences = (await getCollection('conferences'))
+	.filter((conference) => conference.id.startsWith(`${lang}/`));
+const hasDayForEveryConference = allConferences.every((conference) => typeof conference.data.day === 'number');
+const getDayKey = (conference: (typeof allConferences)[number]) => hasDayForEveryConference
+	? conference.data.day
+	: conference.data.date.toISOString().slice(0, 10);
+const conferences = allConferences
+	.sort((a, b) => String(getDayKey(a)).localeCompare(String(getDayKey(b))) || a.data.startsAt.localeCompare(b.data.startsAt));
+const speakers = (await getCollection('speakers'))
+	.filter((speaker) => speaker.id.startsWith(`${lang}/`))
+	.map((speaker) => speaker.data);
+const speakersById = new Map(speakers.map((speaker) => [speaker.id, speaker.name]));
+const rooms = (await getCollection('rooms'))
+	.filter((room) => room.id.startsWith(`${lang}/`))
+	.map((room) => room.data);
+const days = [...new Set(conferences.map(getDayKey))];
+const dayLabels = lang === 'fr'
+	? ['Jour un', 'Jour deux', 'Jour trois']
+	: ['Day One', 'Day Two', 'Day Three'];
+---
+
+<div class="space-y-12">
+	{days.map((day, index) => {
+		const dayConferences = conferences.filter((conference) => getDayKey(conference) === day);
+		return (
+		<section>
+			<h2 class="mb-5 border-b border-border pb-3 text-2xl font-semibold text-ink">{dayLabels[index] ?? `Day ${index + 1}`}</h2>
+			<div class="grid gap-8 md:grid-cols-2">
+				{rooms.map((room) => (
+					<section>
+						<header class="border-b border-border pb-3">
+							<h3 class="m-0 text-xl font-semibold text-ink">{room.name}</h3>
+							{room.capacity && <p class="mt-1 mb-0 text-sm text-subtle">{room.capacity} {lang === 'fr' ? 'places' : 'seats'}</p>}
+						</header>
+						<div class="divide-y divide-border border-b border-border">
+							{dayConferences.filter((conference) => conference.data.room === room.id).map((conference) => {
+								const slug = conference.id.replace(/^[^/]+\//, '');
+								const href = withBase(translatePath(`/conferences/${slug}/`));
+								return (
+									<article class="py-5">
+										<p class="m-0 text-sm font-medium text-ink">{conference.data.startsAt}{conference.data.endsAt && ` - ${conference.data.endsAt}`}</p>
+										<h4 class="mt-2 mb-0 text-lg font-semibold text-ink"><a class="hover:text-accent" href={href}>{conference.data.title}</a></h4>
+										<p class="mt-2 mb-0 text-muted">{conference.data.description}</p>
+										{conference.data.speakers.length > 0 && (
+											<p class="mt-3 mb-0 text-sm text-subtle">
+												{conference.data.speakers.map((id, speakerIndex) => (
+													<Fragment>
+														{speakerIndex > 0 && ' · '}
+														{speakersById.has(id) ? <a class="hover:text-accent" href={withBase(translatePath(`/speakers/${id}/`))}>{speakersById.get(id)}</a> : id}
+													</Fragment>
+												))}
+											</p>
+										)}
+									</article>
+								);
+							})}
+						</div>
+					</section>
+				))}
+			</div>
+		</section>
+		);
+	})}
+</div>

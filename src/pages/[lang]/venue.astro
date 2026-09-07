@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import venuePlaceholder from '../../assets/blog-placeholder-5.png';
+import Card from '../../components/Card.astro';
+import { defaultLang, languages, showDefaultLang } from '../../i18n/ui';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+	return Object.keys(languages)
+		.filter((lang) => showDefaultLang || lang !== defaultLang)
+		.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang ?? defaultLang;
+const rooms = (await getCollection('rooms'))
+	.filter((room) => room.id.startsWith(`${lang}/`))
+	.map((room) => room.data);
+const venue = (await getCollection('venue')).find((entry) => entry.id.startsWith(`${lang}/`))?.data ?? {
+	name: 'Civic Hall',
+	address: '125 Avenida Madero Oriente',
+	city: 'Centro, Morelia, Michoacan, Mexique',
+	description: 'Un batiment civique restaure au coeur historique de Morelia, a quelques pas des cafes, hotels et places publiques.',
+	heroImage: undefined,
+	arrival: "Entrez par les portes principales de l'Avenida Madero. Les inscriptions ouvrent dans le hall; l'Auditorium est au rez-de-chaussee et le Studio a l'etage.",
+	accessibility: "Un acces sans marche est disponible par l'entree sud de la Calle Abasolo. Les deux salles proposent des places reservees et des toilettes accessibles se trouvent pres du hall.",
+};
+---
+
+<PageLayout title="Lieu" description={venue.description}>
+	<section class="content-shell py-12 space-y-8">
+		<div class="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-stretch">
+			<header class="flex flex-col justify-center space-y-3 py-4">
+				<p class="eyebrow m-0">Lieu de Summit 2026</p>
+				<h1 class="text-3xl sm:text-4xl font-semibold leading-tight text-ink m-0">{venue.name}</h1>
+				<p class="text-base text-muted m-0">{venue.description}</p>
+				<address class="not-italic text-muted">{venue.address}<br />{venue.city}</address>
+			</header>
+			<Image class="min-h-72 w-full border border-border object-cover lg:h-full" src={venue.heroImage ?? venuePlaceholder} alt={venue.name} width={1440} />
+		</div>
+		<div class="grid gap-6 border-y border-border py-6 md:grid-cols-2">
+			<div><h2 class="text-lg font-semibold text-ink">Venir au lieu</h2><p class="mt-2 mb-0 text-muted">{venue.arrival}</p></div>
+			<div><h2 class="text-lg font-semibold text-ink">Accessibilite</h2><p class="mt-2 mb-0 text-muted">{venue.accessibility}</p></div>
+		</div>
+		<h2 class="text-2xl font-semibold text-ink">Salles</h2>
+		<div class="grid gap-6 md:grid-cols-2">
+			{rooms.map((room) => <Card title={room.name} eyebrow={room.capacity ? `${room.capacity} places` : undefined} description={room.description} />)}
+		</div>
+	</section>
+</PageLayout>

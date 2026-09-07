@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+	lang: 'en' | 'fr';
+}
+
+const { lang } = Astro.props as Props;
+const venue = (await getCollection('venue')).find((entry) => entry.id.startsWith(`${lang}/`));
+const conferences = (await getCollection('conferences'))
+	.filter((entry) => entry.id.startsWith(`${lang}/`))
+	.map((entry) => entry.data.date)
+	.sort((first, second) => first.getTime() - second.getTime());
+
+if (!venue) throw new Error(`Missing ${lang} venue content.`);
+if (conferences.length === 0) throw new Error(`Missing ${lang} conference content.`);
+
+const dateFormatter = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-US', {
+	day: 'numeric',
+	month: 'long',
+	year: 'numeric',
+	timeZone: 'UTC',
+});
+const startDate = conferences[0]!;
+const endDate = conferences[conferences.length - 1]!;
+const dateRange = startDate.getTime() === endDate.getTime()
+	? dateFormatter.format(startDate)
+	: `${dateFormatter.format(startDate)} - ${dateFormatter.format(endDate)}`;
+const copy = lang === 'fr'
+	? {
+			eyebrow: 'A propos de Summit',
+			title: 'Un lieu de rencontre pour celles et ceux qui construisent le web ouvert.',
+			description: "Summit reunit designers, developpeurs et createurs independants pour des idees pratiques, des conversations franches et du temps partage loin des ecrans.",
+			detailLabel: 'Lieu et dates',
+			linkLabel: 'Decouvrir le lieu',
+			linkHref: '/fr/venue',
+		}
+	: {
+			eyebrow: 'About Summit',
+			title: 'A meeting place for the people building the open web.',
+			description: 'Summit brings designers, developers, and independent makers together for practical ideas, candid conversations, and time to connect away from the screen.',
+			detailLabel: 'Where and when',
+			linkLabel: 'Explore the venue',
+			linkHref: '/venue',
+		};
+---
+
+<section class="grid gap-8 border-y border-border py-10 md:grid-cols-[minmax(0,1.25fr)_minmax(16rem,0.75fr)] md:items-end">
+	<div class="space-y-3">
+		<p class="eyebrow m-0">{copy.eyebrow}</p>
+		<h2 class="m-0 text-3xl font-semibold leading-tight text-ink sm:text-4xl">{copy.title}</h2>
+		<p class="m-0 max-w-2xl text-muted">{copy.description}</p>
+	</div>
+	<div class="border-l-0 border-border pt-1 md:border-l md:pl-8">
+		<p class="m-0 text-xs font-semibold uppercase tracking-[0.16em] text-muted">{copy.detailLabel}</p>
+		<p class="mt-2 mb-5 text-lg font-semibold leading-snug text-ink">{venue.data.name}, {venue.data.city} | {dateRange}</p>
+		<a class="button secondary" href={copy.linkHref}>{copy.linkLabel}</a>
+	</div>
+</section>

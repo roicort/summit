@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import Card from './Card.astro';
+import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+import { withBase } from '../utils/slugify';
+
+interface Props {
+	heading?: string;
+	limit?: number;
+	viewAllHref?: string;
+}
+
+const { heading = 'Conferences', limit = 100, viewAllHref } = Astro.props as Props;
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const allConferences = (await getCollection('conferences'))
+	.filter((conference) => conference.id.startsWith(`${lang}/`));
+const hasDayForEveryConference = allConferences.every((conference) => typeof conference.data.day === 'number');
+const getDayKey = (conference: (typeof allConferences)[number]) => hasDayForEveryConference
+	? conference.data.day
+	: conference.data.date.toISOString().slice(0, 10);
+const conferences = allConferences
+	.sort((a, b) => String(getDayKey(a)).localeCompare(String(getDayKey(b))) || a.data.startsAt.localeCompare(b.data.startsAt))
+	.slice(0, limit);
+const days = [...new Set(conferences.map(getDayKey))];
+const dayLabels = lang === 'fr'
+	? ['Jour un', 'Jour deux', 'Jour trois']
+	: ['Day One', 'Day Two', 'Day Three'];
+---
+
+<section>
+	<header class="space-y-2 max-w-2xl lg:pb-12">
+		<p class="eyebrow m-0">Program</p>
+		<h2 class="text-3xl sm:text-4xl font-semibold leading-tight text-ink m-0">{heading}</h2>
+	</header>
+	<div class="mt-8 space-y-12">
+		{days.map((day, index) => {
+			const dayConferences = conferences.filter((conference) => getDayKey(conference) === day);
+			return (
+			<section>
+				<h3 class="border-b border-border pb-3 text-xl font-semibold text-ink">{dayLabels[index] ?? `Day ${index + 1}`}</h3>
+				<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+					{dayConferences.map((conference) => {
+						const slug = conference.id.replace(/^[^/]+\//, '');
+						return <Card title={conference.data.title} href={withBase(translatePath(`/conferences/${slug}/`))} description={conference.data.description} date={conference.data.date} image={conference.data.heroImage} imageAlt={conference.data.title} />;
+					})}
+				</div>
+			</section>
+			);
+		})}
+		{viewAllHref && <Card title="View full program" href={withBase(viewAllHref)} />}
+	</div>
+</section>

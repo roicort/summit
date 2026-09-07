@@ -1,0 +1,20 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import { defaultLang, showDefaultLang } from '../../../i18n/ui';
+import NewsPost from '../../../layouts/NewsPost.astro';
+
+export async function getStaticPaths() {
+	const entries = await getCollection('news');
+	return entries
+		.filter((entry) => showDefaultLang || !entry.id.startsWith(`${defaultLang}/`))
+		.map((entry) => {
+			const [lang, ...slug] = entry.id.split('/');
+			return { params: { lang, slug: slug.join('/') }, props: entry };
+		});
+}
+
+const entry = Astro.props as CollectionEntry<'news'>;
+const { Content } = await render(entry);
+---
+
+<NewsPost {...entry.data}><Content /></NewsPost>

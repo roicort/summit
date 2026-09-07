@@ -1,0 +1,35 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import { defaultLang, showDefaultLang } from '../../../i18n/ui';
+import PageLayout from '../../../layouts/PageLayout.astro';
+import Prose from '../../../components/Prose.astro';
+import { slugify, withBase } from '../../../utils/slugify';
+
+export async function getStaticPaths() {
+	const conferences = await getCollection('conferences');
+	return conferences.filter((conference) => showDefaultLang || !conference.id.startsWith(`${defaultLang}/`)).map((conference) => {
+		const [lang, ...slug] = conference.id.split('/');
+		return { params: { lang, slug: slug.join('/') }, props: conference };
+	});
+}
+
+const conference = Astro.props as CollectionEntry<'conferences'>;
+const [lang] = conference.id.split('/');
+const { Content } = await render(conference);
+---
+
+<PageLayout title={conference.data.title} description={conference.data.description}>
+	<article class="content-shell py-12 space-y-8 max-w-4xl">
+		<header class="space-y-3">
+			<p class="eyebrow m-0">{conference.data.startsAt}{conference.data.endsAt && ` - ${conference.data.endsAt}`}</p>
+			<h1 class="m-0 text-3xl sm:text-5xl font-semibold leading-tight text-ink">{conference.data.title}</h1>
+			<p class="m-0 text-lg text-muted">{conference.data.description}</p>
+			{conference.data.tags.length > 0 && (
+				<div class="flex flex-wrap gap-2 pt-2">
+					{conference.data.tags.map((tag) => <a class="rounded-full border border-border px-3 py-1 text-sm text-muted transition-colors hover:text-ink" href={withBase(`/${lang}/tags/${slugify(tag)}/`)}>{tag}</a>)}
+				</div>
+			)}
+		</header>
+		<Prose><Content /></Prose>
+	</article>
+</PageLayout>

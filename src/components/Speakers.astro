@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Card from './Card.astro';
+import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+import { withBase } from '../utils/slugify';
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const speakers = (await getCollection('speakers'))
+	.filter((speaker) => speaker.id.startsWith(`${lang}/`));
+---
+
+<div class="grid gap-6 md:grid-cols-3">
+	{speakers.map((speaker) => (
+		<Card
+			title={speaker.data.name}
+			href={withBase(translatePath(`/speakers/${speaker.data.id}/`))}
+			eyebrow={[speaker.data.role, speaker.data.company].filter(Boolean).join(' · ')}
+			description={speaker.data.bio}
+			image={speaker.data.avatar}
+			imageAlt={speaker.data.name}
+		>
+			{speaker.data.location && <p class="mt-3 mb-0 text-sm text-subtle">{speaker.data.location}</p>}
+		</Card>
+	))}
+</div>

@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../../layouts/PageLayout.astro';
+import { getSite } from '../../../utils/consts';
+import { withBase } from '../../../utils/slugify';
+import { defaultLang, showDefaultLang } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+	const entries = await getCollection('news');
+	return [...new Set(entries.map((entry) => entry.id.split('/')[0]))]
+		.filter((lang) => lang && (showDefaultLang || lang !== defaultLang))
+		.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang ?? defaultLang;
+const news = (await getCollection('news'))
+	.filter((entry) => entry.id.startsWith(`${lang}/`))
+	.sort((first, second) => second.data.pubDate.valueOf() - first.data.pubDate.valueOf());
+const site = await getSite();
+const copy = lang === 'fr'
+	? { title: 'Actualites de Summit', description: 'Annonces, mises a jour du programme et informations utiles pour la rencontre.', empty: 'Aucune actualite n est publiee pour le moment.' }
+	: { title: 'News from Summit', description: 'Program updates, announcements, and practical details for the gathering.', empty: 'No news has been published yet.' };
+---
+
+<PageLayout title={`News · ${site.title}`} description={copy.description}>
+	<section class="content-shell py-12 space-y-10">
+		<header class="max-w-3xl space-y-2"><p class="eyebrow m-0">News</p><h1 class="m-0 text-4xl font-semibold leading-tight text-ink">{copy.title}</h1><p class="m-0 text-muted">{copy.description}</p></header>
+		{news.length === 0 ? <p class="text-muted">{copy.empty}</p> : (
+			<div class="border-y border-border">
+				{news.map((entry) => {
+					const slug = entry.id.replace(/^([^/]+)\//, '');
+					return <a class="group grid gap-3 border-b border-border py-6 last:border-b-0 md:grid-cols-[11rem_minmax(0,1fr)] md:gap-6" href={withBase(`/${lang}/news/${slug}/`)}>
+						<time class="text-sm text-muted" datetime={entry.data.pubDate.toISOString()}>{entry.data.pubDate.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time>
+						<div><h2 class="m-0 text-xl font-semibold text-ink transition-colors group-hover:opacity-65">{entry.data.title}</h2><p class="mt-2 mb-0 text-muted">{entry.data.description}</p></div>
+					</a>;
+				})}
+			</div>
+		)}
+	</section>
+</PageLayout>

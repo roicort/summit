@@ -1,0 +1,47 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/Hero.astro';
+import ConferenceList from '../components/ConferenceList.astro';
+import Numbers from '../components/Numbers.astro';
+import About from '../components/About.astro';
+import { getCollection } from 'astro:content';
+import { getSite } from '../utils/consts';
+const site = await getSite();
+const conferences = (await getCollection('conferences')).filter((conference) => conference.id.startsWith('en/'));
+const speakerCount = (await getCollection('speakers')).filter((speaker) => speaker.id.startsWith('en/')).length;
+const dayCount = new Set(conferences.map((conference) => conference.data.day)).size;
+---
+
+<PageLayout
+	title={site.title}
+>
+	<Hero
+		eyebrow="A conference boilerplate"
+		title="A single day of ideas that move the web forward."
+		description="A practical Astro foundation for publishing one event, its conference program, speakers, and schedule."
+		actions={[
+			{ label: 'Explore conferences', href: '/conferences' },
+			{ label: 'View schedule', href: '/schedule' },
+		]}
+	/>
+
+	<About lang="en" />
+
+	<Numbers
+		eyebrow="Summit 2026"
+		title="The event at a glance"
+		copy="Three days of talks, workshops, and conversations across Civic Hall."
+		stats={[
+			{ label: 'Conferences', value: String(conferences.length), description: 'Ideas and practical sessions across the program.' },
+			{ label: 'Speakers', value: String(speakerCount), description: 'Practitioners sharing their work on stage.' },
+			{ label: 'Days', value: String(dayCount), description: 'A three-day gathering in the heart of Morelia.' },
+		]}
+	/>
+
+	<ConferenceList
+		heading="Conferences"
+		limit={3}
+		viewAllHref="/conferences"
+	/>
+
+</PageLayout>

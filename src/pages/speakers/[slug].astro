@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Card from '../../components/Card.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+	const speakers = (await getCollection('speakers')).filter((speaker) => speaker.id.startsWith('en/'));
+	return speakers.map((speaker) => ({ params: { slug: speaker.data.id }, props: speaker }));
+}
+
+const speaker = Astro.props;
+const conferences = (await getCollection('conferences'))
+	.filter((conference) => conference.id.startsWith('en/') && conference.data.speakers.includes(speaker.data.id))
+	.sort((a, b) => a.data.day - b.data.day || a.data.startsAt.localeCompare(b.data.startsAt));
+---
+
+<PageLayout title={speaker.data.name} description={speaker.data.bio}>
+	<article class="content-shell py-12 space-y-10 max-w-4xl">
+		<header class="space-y-3">
+			<p class="eyebrow m-0">{[speaker.data.role, speaker.data.company].filter(Boolean).join(' · ')}</p>
+			<h1 class="m-0 text-3xl sm:text-5xl font-semibold leading-tight text-ink">{speaker.data.name}</h1>
+			<p class="m-0 text-lg text-muted">{speaker.data.bio}</p>
+			{speaker.data.location && <p class="m-0 text-sm text-subtle">{speaker.data.location}</p>}
+		</header>
+		<section class="space-y-5">
+			<h2 class="m-0 text-2xl font-semibold text-ink">Conferences</h2>
+			<div class="grid gap-6 md:grid-cols-2">
+				{conferences.map((conference) => {
+					const slug = conference.id.replace(/^en\//, '');
+					return <Card title={conference.data.title} href={`/conferences/${slug}/`} description={conference.data.description} date={conference.data.date} />;
+				})}
+			</div>
+		</section>
+	</article>
+</PageLayout>
