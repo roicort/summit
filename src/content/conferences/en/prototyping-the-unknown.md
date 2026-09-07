@@ -1,6 +1,6 @@
 ---
-title: Prototyping the unknown
-description: A field guide to testing ideas before certainty arrives.
+title: Restoring landscapes, restoring futures
+description: A field guide to ecological restoration, biodiversity, and long-term care for damaged landscapes.
 date: 2026-10-15
 day: 2
 startsAt: '09:30'
@@ -10,8 +10,8 @@ speakers:
   - marina-li
   - diego-ruiz
 tags:
-  - Product
-  - Experimentation
+  - Restoration
+  - Biodiversity
 ---
 
-Useful prototypes make a question tangible. Learn how to choose the smallest experiment that teaches the team something real.
+Ecologists and land stewards discuss how restoration projects begin, how they learn from place, and how communities can care for living systems over time.

@@ -1,6 +1,6 @@
 ---
-title: Des interfaces de confiance
-description: Concevoir des systemes clairs et fiables pour le travail quotidien.
+title: Eau, territoires et communautes
+description: Comment les savoirs locaux peuvent construire des reponses plus resilientes aux secheresses et aux inondations.
 date: 2026-10-14
 day: 1
 startsAt: '10:30'
@@ -9,7 +9,7 @@ room: studio
 speakers:
   - diego-ruiz
 tags:
-  - Design
+  - Eau
 ---
 
-Comment des systemes visuels calmes, des retours utiles et un langage soigne creent des logiciels fiables.
+Chercheurs et responsables associatifs partagent ce qui devient possible quand l'experience vecue et les donnees environnementales guident les decisions ensemble.

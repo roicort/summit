@@ -1,6 +1,6 @@
 ---
-title: Designing for resilience
-description: How to create experiences that stay useful when everything gets complicated.
+title: Designing cities for heat
+description: Practical approaches to cooling neighborhoods, protecting public health, and adapting urban life.
 date: 2026-10-14
 day: 1
 startsAt: '11:30'
@@ -9,8 +9,8 @@ room: auditorium
 speakers:
   - amara-okafor
 tags:
-  - Design
-  - Systems
+  - Adaptation
+  - Cities
 ---
 
-Resilient products make room for changing needs, imperfect information, and people doing their best under pressure.
+From shade and water to housing and public space, resilience begins with decisions that protect the people most exposed to extreme heat.

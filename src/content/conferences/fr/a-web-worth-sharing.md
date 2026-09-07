@@ -1,6 +1,6 @@
 ---
-title: Un web qui merite d'etre partage
-description: Clore Summit avec une conversation pour rendre Internet plus genereux.
+title: Un avenir que nous voulons transmettre
+description: Clore Summit avec une conversation sur la solidarite, la responsabilite et l'avenir que nous choisissons de laisser.
 date: 2026-10-15
 day: 2
 startsAt: '15:30'
@@ -11,7 +11,7 @@ speakers:
   - tomas-alvarez
 tags:
   - Communaute
-  - Web
+  - Futurs
 ---
 
-Une conversation de cloture sur les choix qui rendent les espaces numeriques plus clairs, plus bienveillants et plus accueillants.
+Une conversation de cloture sur les choix qui peuvent rendre un avenir habitable plus equitable, possible et digne d'etre defendu.

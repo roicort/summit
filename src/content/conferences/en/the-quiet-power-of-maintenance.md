@@ -1,6 +1,6 @@
 ---
-title: The quiet power of maintenance
-description: Making time for the work that keeps a product healthy and a team moving.
+title: The quiet power of adaptation
+description: Why climate resilience depends on patient work, maintenance, and care over time.
 date: 2026-10-14
 day: 1
 startsAt: '14:00'
@@ -9,8 +9,8 @@ room: studio
 speakers:
   - tomas-alvarez
 tags:
-  - Engineering
-  - Teams
+  - Resilience
+  - Care
 ---
 
-Maintenance is not a pause between launches. It is the practice that lets products and teams endure.
+Adaptation is not a one-time project. It is the ongoing practice of caring for infrastructure, ecosystems, and the people who depend on them.

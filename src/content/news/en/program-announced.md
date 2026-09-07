@@ -1,10 +1,10 @@
 ---
-title: The Summit program is here
-description: Two days of practical sessions, conversations, and time to meet the people making the open web.
+title: The climate program is here
+description: Three days of science, lived experience, and practical action for a changing climate.
 pubDate: 2026-08-24
 heroImage: ../../../assets/blog-placeholder-about.png
 ---
 
-The first Summit program is now live. Across two rooms at Civic Hall, speakers will share the decisions, methods, and lessons that shape their everyday work.
+The Summit 2026 program is now live. Across two rooms at the Museo Nacional de Antropologia, speakers will share research, community knowledge, and the decisions that can move climate action from intention to practice.
 
-Browse the sessions, save the talks you want to see, and make time for the conversations between them.
+Browse the sessions, save the conversations you want to join, and make time for the ideas that continue between them.

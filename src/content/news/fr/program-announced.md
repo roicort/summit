@@ -1,10 +1,10 @@
 ---
-title: Le programme de Summit est disponible
-description: Deux jours de sessions pratiques, de conversations et de temps pour rencontrer les personnes qui font le web ouvert.
+title: Le programme climat est disponible
+description: Trois jours de science, d'experiences vecues et d'actions concretes face au changement climatique.
 pubDate: 2026-08-24
 heroImage: ../../../assets/blog-placeholder-about.png
 ---
 
-Le premier programme de Summit est disponible. Dans deux salles du Civic Hall, les intervenants partageront les decisions, methodes et lecons qui structurent leur travail au quotidien.
+Le programme de Summit 2026 est disponible. Dans deux salles du Museo Nacional de Antropologia, les intervenants partageront des recherches, des savoirs locaux et des pistes pour passer de l'intention a l'action climatique.
 
-Parcourez les sessions, retenez les talks qui vous interessent et laissez du temps aux conversations entre deux interventions.
+Parcourez les sessions, retenez les conversations qui vous interessent et laissez du temps aux idees qui continuent entre deux interventions.

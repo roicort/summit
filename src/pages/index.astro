@@ -16,25 +16,25 @@ const dayCount = new Set(conferences.map((conference) => conference.data.day)).s
 	title={site.title}
 >
 	<Hero
-		eyebrow="A conference boilerplate"
-		title="A single day of ideas that move the web forward."
-		description="A practical Astro foundation for publishing one event, its conference program, speakers, and schedule."
+			eyebrow="Summit 2026 · Earth and climate"
+			title="Ideas for a livable planet."
+			description="Three days of science, stories, and practical action for a changing climate."
 		actions={[
-			{ label: 'Explore conferences', href: '/conferences' },
-			{ label: 'View schedule', href: '/schedule' },
+			{ label: 'Explore the program', href: '/conferences' },
+			{ label: 'View the schedule', href: '/schedule' },
 		]}
 	/>
 
 	<About lang="en" />
 
 	<Numbers
-		eyebrow="Summit 2026"
-		title="The event at a glance"
-		copy="Three days of talks, workshops, and conversations across Civic Hall."
+			eyebrow="Summit 2026"
+			title="The gathering at a glance"
+			copy="Three days of talks, workshops, and conversations about the future of our shared home."
 		stats={[
-			{ label: 'Conferences', value: String(conferences.length), description: 'Ideas and practical sessions across the program.' },
-			{ label: 'Speakers', value: String(speakerCount), description: 'Practitioners sharing their work on stage.' },
-			{ label: 'Days', value: String(dayCount), description: 'A three-day gathering in the heart of Morelia.' },
+			{ label: 'Sessions', value: String(conferences.length), description: 'Research, lived experience, and practical climate action.' },
+			{ label: 'Speakers', value: String(speakerCount), description: 'Scientists, organizers, and practitioners in conversation.' },
+			{ label: 'Days', value: String(dayCount), description: 'A shared space for learning, listening, and acting.' },
 		]}
 	/>
 

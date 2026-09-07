@@ -1,6 +1,6 @@
 ---
-title: A web worth sharing
-description: Closing Summit with a conversation about making the internet more generous.
+title: A future worth inheriting
+description: Closing Summit with a conversation about solidarity, responsibility, and the future we choose to leave behind.
 date: 2026-10-15
 day: 2
 startsAt: '15:30'
@@ -11,7 +11,7 @@ speakers:
   - tomas-alvarez
 tags:
   - Community
-  - Web
+  - Futures
 ---
 
-A closing conversation about the decisions that make digital spaces clearer, kinder, and easier to belong in.
+A closing conversation about the choices that can make a livable future more equitable, possible, and worth fighting for.

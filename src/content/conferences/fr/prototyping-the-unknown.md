@@ -1,6 +1,6 @@
 ---
-title: Prototyper l'inconnu
-description: Un guide pratique pour tester les idees avant que la certitude arrive.
+title: Restaurer les paysages, restaurer les futurs
+description: Un guide de terrain sur la restauration ecologique, la biodiversite et le soin des territoires abimes.
 date: 2026-10-15
 day: 2
 startsAt: '09:30'
@@ -10,8 +10,8 @@ speakers:
   - marina-li
   - diego-ruiz
 tags:
-  - Produit
-  - Experimentation
+  - Restauration
+  - Biodiversite
 ---
 
-Les prototypes utiles rendent une question tangible. Decouvrez comment choisir la plus petite experience qui apprend quelque chose de concret a l'equipe.
+Ecologues et gardiens des territoires racontent comment commencent les projets de restauration, comment ils apprennent d'un lieu et comment les communautes prennent soin du vivant.

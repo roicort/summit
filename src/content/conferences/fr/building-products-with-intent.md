@@ -1,6 +1,6 @@
 ---
-title: Construire des produits avec intention
-description: Une keynote pratique pour transformer une idee en elan.
+title: Lire les signaux d'un climat qui change
+description: Une keynote d'ouverture sur ce que nous dit la science du climat et sur la maniere de transformer le savoir en elan.
 date: 2026-10-14
 day: 1
 startsAt: '09:30'
@@ -9,7 +9,7 @@ room: auditorium
 speakers:
   - marina-li
 tags:
-  - Produit
+  - Science du climat
 ---
 
-Une keynote d'ouverture pour choisir les contraintes qui aident une petite equipe a avancer avec intention.
+Une keynote d'ouverture sur les signaux qui transforment deja nos territoires et sur les choix qui peuvent nous aider a repondre avec clarte et courage.

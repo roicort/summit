@@ -1,6 +1,6 @@
 ---
-title: Concevoir pour la resilience
-description: Creer des experiences utiles meme quand tout se complique.
+title: Concevoir des villes face aux canicules
+description: Des approches concretes pour rafraichir les quartiers, proteger la sante publique et adapter la vie urbaine.
 date: 2026-10-14
 day: 1
 startsAt: '11:30'
@@ -9,8 +9,8 @@ room: auditorium
 speakers:
   - amara-okafor
 tags:
-  - Design
-  - Systemes
+  - Adaptation
+  - Villes
 ---
 
-Les produits resilients accueillent les besoins changeants, les informations imparfaites et les personnes sous pression.
+De l'ombre a l'eau, du logement a l'espace public, la resilience commence par des decisions qui protegent les personnes les plus exposees aux chaleurs extremes.

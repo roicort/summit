@@ -9,11 +9,11 @@ const rooms = (await getCollection('rooms'))
 	.filter((room) => room.id.startsWith('en/'))
 	.map((room) => room.data);
 const venue = (await getCollection('venue')).find((entry) => entry.id.startsWith('en/'))?.data ?? {
-	name: 'Civic Hall',
-	address: '125 Avenida Madero Oriente',
-	city: 'Centro, Morelia, Michoacan, Mexico',
-	description: 'A restored civic building in the historic center of Morelia, a short walk from cafes, hotels, and public plazas.',
-	arrival: 'Enter through the main doors on Avenida Madero. Registration opens in the lobby; the Auditorium is on the ground floor and the Studio is upstairs.',
+	name: 'Museo Nacional de Antropologia',
+	address: 'Av. Paseo de la Reforma y Calzada Gandhi s/n',
+	city: 'Chapultepec Polanco, Miguel Hidalgo, 11560 Mexico City, Mexico',
+	description: 'Mexico\'s national museum of anthropology, set in Chapultepec and surrounded by the landscapes and histories that shape our conversations about the Earth.',
+	arrival: 'Enter through the main doors on Paseo de la Reforma. Registration opens in the central lobby; the Auditorium is on the ground floor and the Studio is upstairs.',
 	accessibility: 'Step-free access is available at the south entrance on Calle Abasolo. Both event rooms have reserved seating and accessible restrooms are located beside the lobby.',
 };
 ---

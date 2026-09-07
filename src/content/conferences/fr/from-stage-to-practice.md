@@ -1,6 +1,6 @@
 ---
-title: De la scene a la pratique
-description: Un atelier de cloture pour transformer les conversations de Summit en prochaines etapes.
+title: Du savoir a l'action climatique
+description: Un atelier de cloture pour transformer les preuves et les idees partagees en engagements concrets.
 date: 2026-10-16
 day: 3
 startsAt: '10:00'
@@ -11,7 +11,7 @@ speakers:
   - tomas-alvarez
 tags:
   - Atelier
-  - Communaute
+  - Action
 ---
 
-Apportez les questions qui vous ont marque. Ensemble, nous transformerons les meilleures idees de Summit en petites experiences concretes.
+Apportez les questions qui vous ont marque. Ensemble, nous transformerons les meilleures idees de Summit en engagements pratiques pour nos foyers, institutions et communautes.

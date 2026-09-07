@@ -1,7 +1,7 @@
 site:
   title: "Summit"
-  description: "A conference boilerplate for one memorable event."
-  based: "Mexico City"
+  description: "Summit 2026: a gathering for climate action, Earth systems, and a livable future."
+  based: "Mexico City, Mexico"
   timezone: "America/Mexico_City"
   locale: "es-MX"
   registrationUrl: "https://example.com/register"

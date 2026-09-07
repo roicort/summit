@@ -30,7 +30,7 @@ export const ui = {
     'footer.astroGithub': 'Astro GitHub',
     'footer.allRightsReserved': 'All rights reserved.',
     'footer.designedBy': 'Designed by',
-    'footer.inMorelia': 'in Morelia.',
+    'footer.inMorelia': 'in Mexico City.',
   },
   fr: {
     'nav.home': 'Accueil',
@@ -53,6 +53,6 @@ export const ui = {
     'footer.astroGithub': 'Astro GitHub',
     'footer.allRightsReserved': 'Tous droits réservés.',
     'footer.designedBy': 'Conçu par',
-    'footer.inMorelia': 'à Morelia.',
+    'footer.inMorelia': 'à Mexico.',
   },
 } as const;

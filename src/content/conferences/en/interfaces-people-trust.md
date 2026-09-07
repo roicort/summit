@@ -1,6 +1,6 @@
 ---
-title: Interfaces people trust
-description: Designing clear, dependable systems for everyday work.
+title: Water, land, and the communities between
+description: How local knowledge can shape more resilient responses to drought, flooding, and a changing climate.
 date: 2026-10-14
 day: 1
 startsAt: '10:30'
@@ -9,7 +9,7 @@ room: studio
 speakers:
   - diego-ruiz
 tags:
-  - Design
+  - Water
 ---
 
-How calm visual systems, useful feedback, and careful language create software people can depend on.
+Researchers and community leaders share what becomes possible when lived experience and environmental data guide decisions together.

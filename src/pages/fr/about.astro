@@ -10,22 +10,22 @@ const organizers = (await getCollection('authors'))
 	.map((entry) => entry.data);
 ---
 
-<PageLayout title="A propos de Summit" description="Les personnes et partenaires qui donnent vie a Summit a Morelia.">
+<PageLayout title="A propos de Summit" description="Les personnes et partenaires qui donnent vie a un sommet climat a Mexico.">
 	<section class="content-shell py-12 space-y-14">
 		<About lang="fr" />
 
 		<section class="grid gap-8 border-b border-border pb-14 md:grid-cols-[minmax(0,1.25fr)_minmax(16rem,0.75fr)]" aria-labelledby="about-heading">
 			<div class="space-y-5">
 				<p class="eyebrow m-0">La rencontre</p>
-				<h1 id="about-heading" class="m-0 text-3xl font-semibold leading-tight text-ink sm:text-4xl">Une conference pour le travail qui continue apres la keynote.</h1>
-				<p class="m-0 text-lg leading-relaxed text-muted">Summit est une petite conference pour celles et ceux qui font le web : les designers qui dessinent un parcours utile, les developpeurs qui assurent la fiabilite d'un service, les redacteurs qui donnent une voix a une interface et les equipes qui rendent ce travail possible.</p>
-				<p class="m-0 leading-relaxed text-muted">Nous reunissons ces regards parce que les experiences numeriques qui durent sont rarement le resultat d'une seule discipline. Elles naissent de compromis honnetes, d'un langage partage et de l'envie de regarder comment une decision sera vecue par la personne de l'autre cote de l'ecran.</p>
-				<p class="m-0 leading-relaxed text-muted">Tout au long du programme, les intervenants partagent les details de leur pratique : ce qu'ils ont essaye, ce qui les a fait changer d'avis et ce qu'ils feraient autrement. L'objectif n'est pas d'aligner des reponses definitives, mais de mieux discuter de la maniere de les trouver.</p>
+				<h1 id="about-heading" class="m-0 text-3xl font-semibold leading-tight text-ink sm:text-4xl">Un sommet pour le travail qui commence apres le rapport climatique.</h1>
+				<p class="m-0 text-lg leading-relaxed text-muted">Summit est une rencontre pour celles et ceux qui agissent face a la crise climatique : scientifiques, communautes qui protegent leurs territoires, militants et praticiens qui transforment les preuves en actions.</p>
+				<p class="m-0 leading-relaxed text-muted">Nous reunissons ces regards parce qu'un avenir habitable ne sera pas construit par une seule discipline. Il depend de savoirs partages, de compromis honnetes et de l'ecoute des personnes qui vivent deja les effets d'un climat qui change.</p>
+				<p class="m-0 leading-relaxed text-muted">Tout au long du programme, les intervenants partagent les details de leur travail : ce qu'ils ont appris, ce qui les a fait changer d'avis et ce qui peut etre fait maintenant. L'objectif n'est pas d'aligner des reponses parfaites, mais de passer de l'inquietude a l'action collective.</p>
 			</div>
 			<div class="space-y-5 border-l-0 border-border pt-1 lg:border-l lg:pl-8">
-				<p class="m-0 text-lg font-semibold leading-snug text-ink">Pour prendre le temps, pas pour accelerer.</p>
-				<p class="m-0 leading-relaxed text-muted">Le programme laisse de la place entre les sessions pour les questions, les conversations improvisees et de vraies pauses. Deux salles permettent de varier les sujets sans transformer la journee en course entre les grandes annonces.</p>
-				<p class="m-0 leading-relaxed text-muted">Morelia donne a la rencontre une echelle humaine : un centre historique ou l'on marche facilement, des espaces publics genereux et un lieu concu pour se retrouver. Venez pour les talks, restez pour les conversations qui les prolongent.</p>
+				<p class="m-0 text-lg font-semibold leading-snug text-ink">Pour prendre le temps, pas pour amplifier l'alarme.</p>
+				<p class="m-0 leading-relaxed text-muted">Le programme laisse de la place entre les sessions pour les questions, les conversations improvisees et de vraies pauses. Deux salles permettent de varier les sujets tout en laissant le temps de comprendre les preuves et d'imaginer des reponses concretes.</p>
+				<p class="m-0 leading-relaxed text-muted">Mexico donne a la rencontre un cadre puissant : une capitale vivante, les forets de Chapultepec et un musee qui relie l'histoire humaine a l'avenir de la Terre.</p>
 			</div>
 		</section>
 
@@ -33,7 +33,7 @@ const organizers = (await getCollection('authors'))
 			<header class="max-w-2xl space-y-2">
 				<p class="eyebrow m-0">Organisateurs</p>
 				<h1 id="organizers-heading" class="m-0 text-3xl font-semibold leading-tight text-ink sm:text-4xl">Les personnes derriere Summit</h1>
-				<p class="m-0 text-muted">Une petite equipe locale qui imagine une rencontre utile et attentive pour la communaute du web ouvert.</p>
+				<p class="m-0 text-muted">Une petite equipe locale qui imagine une rencontre utile et attentive pour celles et ceux qui agissent pour la justice climatique.</p>
 			</header>
 			<div class="grid gap-6 md:grid-cols-3">
 				{organizers.map((organizer) => <Card title={organizer.name} eyebrow={organizer.role} description={organizer.bio} image={organizer.avatar} imageAlt={organizer.name} />)}
@@ -44,7 +44,7 @@ const organizers = (await getCollection('authors'))
 			<div class="max-w-2xl space-y-3">
 				<p class="eyebrow m-0">Sponsors</p>
 				<h2 id="sponsors-heading" class="m-0 text-2xl font-semibold leading-tight text-ink">Contribuer a rendre Summit possible</h2>
-				<p class="m-0 text-muted">Le sponsoring soutient des billets accessibles, un lieu accueillant et les details qui font reussir une rencontre en personne. Les opportunites de partenariat seront annoncees prochainement.</p>
+				<p class="m-0 text-muted">Le sponsoring soutient des billets accessibles, un lieu accueillant et les details qui rendent possible une rencontre climat. Les opportunites de partenariat seront annoncees prochainement.</p>
 			</div>
 			<div class="mt-8">
 				<Sponsors />

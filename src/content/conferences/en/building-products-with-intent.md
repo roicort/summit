@@ -1,6 +1,6 @@
 ---
-title: Building products with intent
-description: A practical opening keynote about turning an idea into momentum.
+title: Reading the signals of a changing climate
+description: An opening keynote about what climate science is telling us and how to turn knowledge into momentum.
 date: 2026-10-14
 day: 1
 startsAt: '09:30'
@@ -9,7 +9,7 @@ room: auditorium
 speakers:
   - marina-li
 tags:
-  - Product
+  - Climate science
 ---
 
-An opening keynote about choosing the constraints that help a small team make meaningful progress.
+An opening keynote about the signals already reshaping our communities, and the choices that can help us respond with clarity and courage.

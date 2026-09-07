@@ -1,6 +1,6 @@
 ---
-title: From stage to practice
-description: A closing workshop for turning Summit conversations into next steps.
+title: From knowledge to climate action
+description: A closing workshop for turning shared evidence and ideas into commitments we can carry home.
 date: 2026-10-16
 day: 3
 startsAt: '10:00'
@@ -11,7 +11,7 @@ speakers:
   - tomas-alvarez
 tags:
   - Workshop
-  - Community
+  - Action
 ---
 
-Bring the questions that stayed with you. Together, we will turn the strongest ideas from Summit into small, concrete experiments.
+Bring the questions that stayed with you. Together, we will turn the strongest ideas from Summit into practical commitments for our homes, institutions, and communities.

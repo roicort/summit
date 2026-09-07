@@ -1,8 +1,7 @@
 id: sofia
 name: Sofía Herrera
-role: Engineering Lead
-bio: Full-stack engineering with a bias for performance, DX, and maintainable
-  architectures.
+role: Operations Lead
+bio: Event producer focused on accessible logistics, low-impact operations, and care.
 avatar: ../../../assets/team/aiface-4.png
 location: Helsinki, FI
-focus: Web performance, platforms, content systems, CI/CD.
+focus: Accessibility, travel planning, venue and production.
